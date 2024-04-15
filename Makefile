@@ -2,7 +2,7 @@ BUILD_NAME=AVerTV
 
 OS=
 
-CC=gcc
+CC=clang
 OP=3
 
 PATH_SRC=./src/
