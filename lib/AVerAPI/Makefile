@@ -17,7 +17,7 @@ ifeq ($(OS),WIN)
 	BUILD_NAME:=averapi.dll
 endif
 
-FLAGS+=-shared
+FLAGS+=-shared -lusb-1.0
 CFLAGS+=-Wall -O$(OP) -fPIC
 
 SRC:= $(addprefix $(PATH_SRC),$(SRC) )

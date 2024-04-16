@@ -2,7 +2,7 @@ BUILD_NAME=AVerTV
 
 OS=
 
-CC=clang
+CC=gcc
 OP=3
 
 PATH_SRC=./src/
@@ -20,7 +20,7 @@ ifeq ($(OS),WIN)
 	LIB:=averapi.dll
 endif
 
-FLAGS+=
+FLAGS+=-lusb-1.0
 CFLAGS+=-Wall -O$(OP)
 
 SRC:= $(addprefix $(PATH_SRC),$(SRC) )
