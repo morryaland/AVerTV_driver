@@ -101,15 +101,16 @@ static int AVERTV_device_connect( libusb_device_handle **device )
 
   /* data_transfer */
   ct_init();
-  unsigned char *data = NULL; 
+  unsigned char data[1]; 
   for (int i = 0; i < TRANSFERRED_LEN; i++) {
     ret = libusb_control_transfer(*device, ct[i].RequestType, ct[i].bRequest, ct[i].wValue, ct[i].wIndex, data, ct[i].wLength, 0);
     if (ret < 0) {
       puts("ERROR: transferred out data");
       return ret;
     }
-    if (data)
+    if (ct[i].wLength) {
       printf("%x\n", *data);
+    }
   }
   return 0;
 }
