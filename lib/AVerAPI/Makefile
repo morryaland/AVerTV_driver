@@ -1,4 +1,4 @@
-BUILD_NAME:=averapi.so
+BUILD_NAME:=../averapi.so
 
 OS=
 
@@ -7,23 +7,21 @@ OP=3
 
 PATH_SRC=./src/
 PATH_OBJ=./obj/
-PATH_BIN=../
+PATH_BIN=./bin/
 
-SRC=aver_device.c
-OBJ=aver_device.o
+SRC=aver_device.c aver_RCA.c 
+OBJ=aver_device.o aver_RCA.o
 
 ifeq ($(OS),WIN)
 	CC:=x86_64-w64-mingw32-gcc
 	BUILD_NAME:=averapi.dll
 endif
 
-FLAGS+=-shared -lusb-1.0
+FLAGS+=-shared
 CFLAGS+=-Wall -O$(OP) -fPIC
 
 SRC:= $(addprefix $(PATH_SRC),$(SRC) )
 OBJ:= $(addprefix $(PATH_OBJ),$(OBJ) )
-BUILD_NAME:= $(addprefix $(PATH_BIN),$(BUILD_NAME) )
-
 
 $(BUILD_NAME) : $(OBJ)
 	$(CC) -o $(BUILD_NAME) $(OBJ) $(FLAGS)

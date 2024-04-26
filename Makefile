@@ -2,7 +2,7 @@ BUILD_NAME=AVerTV
 
 OS=
 
-CC=clang
+CC=gcc
 OP=3
 
 PATH_SRC=./src/
@@ -38,7 +38,7 @@ $(PATH_OBJ)%.o : $(PATH_SRC)%.c
 	$(CC) -c $< -o $@ $(CFLAGS)
 
 $(LIB) :
-	make -C lib/AVerAPI/ OS=$(OS) OP=$(OP)
+	make -C lib/AVerAPI/ OS=$(OS) OP=$(OP) CC=$(CC)
 
 clean :
 	rm $(BUILD_NAME) $(PATH_OBJ)*.o $(BUILD_NAME_LN)

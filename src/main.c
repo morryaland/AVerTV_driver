@@ -16,6 +16,13 @@ int main() {
     puts("ERROR: avertv_init");
     return ret;
   }
+  for (int i = 0; i < 1; i++) {
+    ret = AVERTV_get_video_RCA(NTSC);
+    if(ret < 0) {
+      puts("ERROR: get_video_RCA");  
+      return ret;
+    }
+  }
   AVERTV_free(&av_device);
   libusb_exit(NULL);
   return ret;
